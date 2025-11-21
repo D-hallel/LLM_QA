@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LLM Q&A — Project</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<main class="container">
+<h1>LLM Q&amp;A (Project)</h1>
+
+
+<form method="post">
+<label for="question">Enter your question</label>
+<textarea id="question" name="question" rows="4" required></textarea>
+<div class="form-row">
+<label for="model">(optional) HuggingFace model</label>
+<input id="model" name="model" placeholder="e.g. gpt2, facebook/opt-1.3b" />
+</div>
+<button type="submit">Ask</button>
+</form>
+
+
+{% if error %}
+<section class="card error">
+<h3>Error</h3>
+<p>{{ error }}</p>
+</section>
+{% endif %}
+
+
+{% if processed %}
+<section class="card">
+<h3>Processed question</h3>
+<p>{{ processed }}</p>
+</section>
+{% endif %}
+
+
+{% if response %}
+<section class="card">
+<h3>LLM prompt sent</h3>
+<pre>{{ response }}</pre>
+</section>
+{% endif %}
+
+
+{% if answer %}
+<section class="card">
+<h3>Answer ({{ model_used }})</h3>
+<p>{{ answer }}</p>
+</section>
+{% endif %}
+
+
+<footer>
+<small>For the assignment: use today (21/11/2025) as project date.</small>
+</footer>
+</main>
+</body>
+</html>
